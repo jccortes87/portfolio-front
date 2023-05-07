@@ -3,17 +3,16 @@ import { BehaviorSubject } from "rxjs";
 
 
 @Injectable({
-    providedIn: 'root'
-   })
-
+    providedIn:'root',
+})
 export class GlobalService{
-    
-    private isLogin = new BehaviorSubject('esto es una variable');
+    //declaro por defecto que sea false al comienzo de la aplicación.
+    private isLogin = new BehaviorSubject<boolean>(false);
     currentLogin = this.isLogin.asObservable();
 
     constructor(){}
 
-    updateCurrentLogin(message:string){
-        this.isLogin.next(message);
+    updateCurrentLogin(login:boolean){
+        this.isLogin.next(login);
     }
 }

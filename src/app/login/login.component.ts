@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { GlobalService } from '../common/global-service';
 
 @Component({
   selector: 'app-login',
@@ -6,15 +7,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 
 export class LoginComponent implements OnInit {
-  @Output() isLogin = new EventEmitter<boolean> ();
-  login:boolean = false;
-  constructor(){}
+  islogin:boolean = false;
+  constructor(private globalService:GlobalService){}
   ngOnInit(): void {
+    this.globalService.currentLogin.subscribe(value =>{
+      this.islogin = value;
+    })
     console.log('se ha cargado el componente login')
   }
   changeLogin(){
-    this.login = !this.login;
-    this.isLogin.emit(this.login);
+    this.globalService.updateCurrentLogin(!this.islogin);
   }
   
 

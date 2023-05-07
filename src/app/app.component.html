@@ -1,5 +1,5 @@
   <ng-container *ngIf="!isLogin">
-     <app-login (isLogin)="receiveLogin($event)"></app-login>
+     <app-login></app-login>
     </ng-container>
     <div class="container-scroller" *ngIf="isLogin">
       <!-- partial:../../partials/_sidebar.html -->
@@ -10,7 +10,7 @@
           <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <ul class="nav">
-          <!-- <li class="nav-item profile">
+          <li class="nav-item profile">
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
@@ -58,7 +58,7 @@
                 </a>
               </div>
             </div>
-          </li> -->
+          </li>
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
@@ -322,7 +322,7 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a (click)="logout()" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
